@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StorageService } from './service/storage.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'psy-core-front';
+
+  constructor(private storageService:StorageService){
+    this.storageService.setParameter();
+  }
 }

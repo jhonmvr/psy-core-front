@@ -1,0 +1,77 @@
+<div class="ion-hide-md-up">
+
+    <div class="yellow-container">
+        <div class="purple-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="/assets/playground_assets/frame2043-ztw.svg" alt="Frame2043" />
+
+                </div>
+            </div>
+            <div>
+                <div class="col-md-12">
+                    <span class="whiteLabeelHeaderRegistro"> Bienvenido a QuskiOro</span>
+                </div>
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="contentRegistro">
+
+    <div class="paddingFila">
+
+    </div>
+    <div class="paddingFila">
+        <label class="labelInputDatosCliente" position="stacked">Ingresa los campos a continuación</label>
+    </div>
+    <br>
+    <form (ngSubmit)="login()" [formGroup]="credentials" style="padding-top:3%;">
+        <div class="input-group">
+            <div class="paddingFila">
+                <div class="col-md-12" size="12">
+                    <label class="labelInputDatosCliente" position="stacked">Usuario</label>
+                    <ion-input class="inputDatosCliente" type="text" placeholder="Nombre de usuario" formControlName="idUsuario"></ion-input>
+                    <div *ngIf="(idUsuario.dirty || idUsuario.touched) && idUsuario.errors" class="errors">
+                        <span *ngIf="idUsuario.errors?.required">Cédula es requerida</span>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="paddingFila">
+                <div class="col-md-12" size="12">
+                    <label class="labelInputDatosCliente" position="stacked">Contraseña</label>
+                    <ion-input class="inputDatosCliente" type="password" placeholder="Contraseña" formControlName="contrasena"></ion-input>
+                    <div *ngIf="(contrasena.dirty || contrasena.touched) && contrasena.errors" class="errors">
+                        <span *ngIf="contrasena.errors?.required">Contrasña es requerida</span>
+                        <span *ngIf="contrasena.errors?.minlength">Contrasña necesita ser de 6 caracteres</span>
+                    </div>
+                </div>
+            </div>
+            <div class="paddingFila">
+                <button class="textoBotonOlvideContra" type="button" fill="clear" (click)="olvideContrasena()">Olvide mi
+                    contraseña</button>
+
+            </div>
+        </div>
+        <div class="paddingFila">
+            <div class="col-md-12" size="12">
+                <button class="botonPrincipal" type="submit" expand="block" [disabled]="!credentials.valid">Iniciar
+                    sesion</button>
+            </div>
+        </div>
+        <div class="paddingFila">
+            <div class="col-md-12" size="12">
+                <button class="botonPrincipal" expand="block" fill="outline" color="primary" (click)="registrarse()">Registrarme</button>
+            </div>
+        </div>
+
+
+    </form>
+</div>

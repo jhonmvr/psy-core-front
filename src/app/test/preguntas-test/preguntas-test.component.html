@@ -1,0 +1,10 @@
+<mat-progress-bar mode="indeterminate"></mat-progress-bar>
+<div *ngFor="let pregunta of preguntas">
+    <label>{{pregunta.contenido}}</label>
+    <mat-radio-group *ngIf="pregunta.tipoControl=='option'">
+        <mat-radio-button *ngFor="let opcion of pregunta.opciones" value="{{opcion.valor}}">{{opcion.valor}}</mat-radio-button>
+
+    </mat-radio-group>
+
+
+</div>

@@ -9,12 +9,25 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatTableModule } from "@angular/material/table";
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
-
+import { MatRadioModule } from "@angular/material/radio";
+import { PreguntasTestComponent } from './preguntas-test/preguntas-test.component';
+import { ResultadoComponent } from './resultado/resultado.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar'
 
 const routes: Routes = [
   {
     path: '',
     component: ProcesoComponent
+
+  },
+  {
+    path: ':uniqueID',
+    component: PreguntasTestComponent
+
+  },
+  {
+    path: 'resultado/:id',
+    component: ResultadoComponent
 
   }
 
@@ -22,9 +35,13 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    ProcesoComponent
+    ProcesoComponent,
+    PreguntasTestComponent,
+    ResultadoComponent
   ],
   imports: [
+    MatProgressBarModule,
+    MatRadioModule,
     MatTableModule,
     MatPaginatorModule,
     MatFormFieldModule,

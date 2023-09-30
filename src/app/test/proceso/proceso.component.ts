@@ -1,6 +1,9 @@
 import { DataSource } from '@angular/cdk/collections';
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { Paciente } from 'src/app/interfaces/proceso.interface';
 import { TestService } from 'src/app/service/test-service.service';
 
 @Component({
@@ -8,18 +11,48 @@ import { TestService } from 'src/app/service/test-service.service';
   templateUrl: './proceso.component.html',
   styleUrls: ['./proceso.component.scss']
 })
-export class ProcesoComponent {
-  dataSource!:DataSource<any>;
+
+
+
+export class ProcesoComponent implements AfterViewInit {
+
+  codigoPaciente: string = 'CP12345';
+  mailPaciente: string = '';
+
+  ngAfterViewInit(): void {
+    if (this.paginator) {
+      this.dataSource.paginator = this.paginator;
+    }
+    this.buscarProcesosPage();
+  }
+
+  displayedColumns: string[] = ['accion', 'codigoPaciente', 'tipoTest', 'estado'];
+
+  dataSource: MatTableDataSource<Paciente> = new MatTableDataSource<Paciente>([]);
+  @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator | null;
   control:FormControl = new FormControl('');
   items = []
+
+
+
 constructor(private testService:TestService){
-  this.buscarProcesosPage();
 
 }
 
-  buscarProcesosPage(){
-    this.testService.buscarProcesosPage(0,0).subscribe(r=>{
-      console.log("respusts",r);
+
+buscarProcesosPage(){
+    this.testService.buscarProcesosPage(0,0).subscribe(data=>{
+      console.log(data)
+      this.dataSource = data.content;
+      this.dataSource.paginator = data.content.paginator;
     });
   }
+
+
+
+  crear() {
+
+  }
+
+
 }

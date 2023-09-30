@@ -1,0 +1,71 @@
+.header {
+  width: 100%;
+  text-align: center;
+  background-color: var(--color-azul-suave);
+  padding: 20px 0;
+}
+
+.header__title {
+  margin: 0;
+  font-size: 24px;
+}
+
+.table-container {
+  padding: 0% 5%; /* 0 en la parte superior e inferior, 20px en los lados izquierdo y derecho */
+}
+
+.table-container mat-table {
+  padding-top : 5%;
+  background-color: var(--color-gris);
+  border-radius: 8px;
+}
+
+.table-container mat-header-cell {
+  background-color: var(--color-blanco);
+  color: var(--color-negro-suave);
+  font-weight: 550;
+  border-bottom: 2px solid var(--color-azul-suave);
+
+}
+
+.table-container mat-cell {
+  border-bottom: 1px solid var(--color-azul-suave);
+}
+
+.table-container mat-cell,
+.table-container mat-header-cell {
+  padding: 10px;
+  text-align: center;
+}
+
+.mat-paginator {
+  background-color: var(--color-gris);
+  border-top: 1px solid var(--color-azul-suave);
+}
+
+.mat-paginator-container {
+  color: var(--color-azul-suave);
+}
+
+.table-container button {
+  background-color: var(--color-azul-suave);
+  color: var(--color-blanco);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+
+}
+
+$color-azul-suave: #AEDFF7;
+
+.table-container button:hover {
+  background-color: darken($color-azul-suave, 10%);
+}
+
+
+button mat-icon {
+  font-size: 16px;
+  vertical-align: middle;
+  margin-left: 8px;
+}

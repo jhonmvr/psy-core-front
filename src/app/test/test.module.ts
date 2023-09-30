@@ -7,6 +7,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatTableModule } from "@angular/material/table";
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatIconModule } from '@angular/material/icon';
+
 
 const routes: Routes = [
   {
@@ -23,13 +26,16 @@ const routes: Routes = [
   ],
   imports: [
     MatTableModule,
+    MatPaginatorModule,
     MatFormFieldModule,
+    MatIconModule,
     MatInputModule,
     MatSelectModule,
     ReactiveFormsModule,
     FormsModule,
     RouterModule.forChild(routes),
-    CommonModule
+    CommonModule,
+
   ]
 })
 export class TestModule { }

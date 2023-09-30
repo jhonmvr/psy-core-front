@@ -7,8 +7,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatTableModule } from "@angular/material/table";
+import { MatRadioModule } from "@angular/material/radio";
 import { PreguntasTestComponent } from './preguntas-test/preguntas-test.component';
 import { ResultadoComponent } from './resultado/resultado.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar'
 
 const routes: Routes = [
   {
@@ -36,6 +38,8 @@ const routes: Routes = [
     ResultadoComponent
   ],
   imports: [
+    MatProgressBarModule,
+    MatRadioModule,
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,

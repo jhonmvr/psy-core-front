@@ -10,7 +10,9 @@ import { MatTableModule } from "@angular/material/table";
 import { MatRadioModule } from "@angular/material/radio";
 import { PreguntasTestComponent } from './preguntas-test/preguntas-test.component';
 import { ResultadoComponent } from './resultado/resultado.component';
-import {MatProgressBarModule} from '@angular/material/progress-bar'
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { PreguntaComponent } from './preguntas-test/pregunta/pregunta.component';
+import { MensajeErrorControlComponent } from './mensaje-error-control/mensaje-error-control.component'
 
 const routes: Routes = [
   {
@@ -24,7 +26,7 @@ const routes: Routes = [
 
   },
   {
-    path: 'resultado/:id',
+    path: 'resultado/:uniqueID',
     component: ResultadoComponent
 
   }
@@ -35,7 +37,9 @@ const routes: Routes = [
   declarations: [
     ProcesoComponent,
     PreguntasTestComponent,
-    ResultadoComponent
+    ResultadoComponent,
+    PreguntaComponent,
+    MensajeErrorControlComponent
   ],
   imports: [
     MatProgressBarModule,

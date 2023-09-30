@@ -1,0 +1,11 @@
+<label>{{contenido}}</label>
+<div class="row">
+
+    <mat-radio-group [formControl]="formControl">
+        <mat-radio-button *ngFor="let opcion of opciones" [value]="opcion">{{opcion.valor}}</mat-radio-button>
+
+    </mat-radio-group>
+
+    <app-mensaje-error-control [control]="formControl"></app-mensaje-error-control>
+
+</div>

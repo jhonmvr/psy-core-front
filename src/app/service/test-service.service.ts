@@ -15,7 +15,7 @@ export class TestService {
 
   public buscarProcesosPage(page:number, size:number) {
 
-    let serviceUrl = this.storage.appResourcesUrl + 'api/proceso/listAl';
+    let serviceUrl = this.storage.appResourcesUrl + 'api/proceso/listAll';
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     let params = new HttpParams().set('page', page).set('page', size);
     let options = { headers: headers, params: params };

@@ -7,6 +7,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatTableModule } from "@angular/material/table";
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from "@angular/material/radio";
 import { PreguntasTestComponent } from './preguntas-test/preguntas-test.component';
 import { ResultadoComponent } from './resultado/resultado.component';
@@ -45,13 +47,16 @@ const routes: Routes = [
     MatProgressBarModule,
     MatRadioModule,
     MatTableModule,
+    MatPaginatorModule,
     MatFormFieldModule,
+    MatIconModule,
     MatInputModule,
     MatSelectModule,
     ReactiveFormsModule,
     FormsModule,
     RouterModule.forChild(routes),
-    CommonModule
+    CommonModule,
+
   ]
 })
 export class TestModule { }

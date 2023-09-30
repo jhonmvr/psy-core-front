@@ -7,11 +7,23 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatTableModule } from "@angular/material/table";
+import { PreguntasTestComponent } from './preguntas-test/preguntas-test.component';
+import { ResultadoComponent } from './resultado/resultado.component';
 
 const routes: Routes = [
   {
     path: '',
     component: ProcesoComponent
+
+  },
+  {
+    path: ':uniqueID',
+    component: PreguntasTestComponent
+
+  },
+  {
+    path: 'resultado/:id',
+    component: ResultadoComponent
 
   }
 
@@ -19,7 +31,9 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    ProcesoComponent
+    ProcesoComponent,
+    PreguntasTestComponent,
+    ResultadoComponent
   ],
   imports: [
     MatTableModule,

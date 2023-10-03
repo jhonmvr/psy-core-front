@@ -1,82 +1,76 @@
 <header class="header">
-  <h1 class="header__title">Psyco Killer</h1>
+    <h1 class="header__title">PsyCORE</h1>
 </header>
 
 
 <div class="table-container">
-  <mat-table #table [dataSource]="dataSource">
-    <ng-container matColumnDef="accion">
-      <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        <!-- Añade botones o links para acciones aquí, por ejemplo: -->
-        <button mat-icon-button>
-           Enviar <mat-icon>email</mat-icon>
-      </button>
-      </mat-cell>
-    </ng-container>
+    <mat-table #table [dataSource]="dataSource">
+        <ng-container matColumnDef="accion">
+            <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <!-- Añade botones o links para acciones aquí, por ejemplo: -->
+                <button *ngIf="element.estado =='PENDIENTE'" mat-icon-button (click)="enviar(element)">Enviar<mat-icon>email</mat-icon></button>
+                <button *ngIf="element.estado =='RESUELTO'" mat-icon-button (click)="verResultado(element)">Ver Resultado<mat-icon>remove_red_eye</mat-icon></button>
+            </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="codigoPaciente">
-      <mat-header-cell *matHeaderCellDef> Código Paciente </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.codigoPaciente}} </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="codigoPaciente">
+            <mat-header-cell *matHeaderCellDef> Código Paciente </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.codigoPaciente}} </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="tipoTest">
-      <mat-header-cell *matHeaderCellDef> Tipo Test </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.testCat}} </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="tipoTest">
+            <mat-header-cell *matHeaderCellDef> Tipo Test </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.testCat}} </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="estado">
-      <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.estado? element.estado : 'PENDIENTE'  }} </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="estado">
+            <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.estado? element.estado : 'PENDIENTE' }} </mat-cell>
+        </ng-container>
 
 
-    <ng-container matColumnDef="fecha">
-      <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.fecha}} </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="fecha">
+            <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.fecha}} </mat-cell>
+        </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
-  <div class="row">
+<div class="row">
     <!-- ComboBox Tipo Test -->
     <div class="col-3">
-      <mat-form-field appearance="fill" class="w-100">
-        <mat-label>Tipo Test</mat-label>
-        <mat-select>
-          <mat-option value="test1">Test 1</mat-option>
-          <mat-option value="test2">Test 2</mat-option>
-          <!-- ...otros tests -->
-        </mat-select>
-      </mat-form-field>
+        <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Tipo Test</mat-label>
+            <mat-select>
+                <mat-option value="test1">Test 1</mat-option>
+                <mat-option value="test2">Test 2</mat-option>
+                <!-- ...otros tests -->
+            </mat-select>
+        </mat-form-field>
     </div>
 
     <!-- Código Paciente -->
     <div class="col-3">
-      <mat-form-field appearance="fill" class="w-100">
-        <mat-label>Código Paciente</mat-label>
-        <input matInput [value]="codigoPaciente" disabled/>
-      </mat-form-field>
+        <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Código Paciente</mat-label>
+            <input matInput [value]="codigoPaciente" disabled/>
+        </mat-form-field>
     </div>
 
     <!-- Mail Paciente -->
     <div class="col-3">
-      <mat-form-field appearance="fill" class="w-100">
-        <mat-label>Mail Paciente</mat-label>
-        <input matInput placeholder="ejemplo@dominio.com" [(ngModel)]="mailPaciente" />
-      </mat-form-field>
+        <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Mail Paciente</mat-label>
+            <input matInput placeholder="ejemplo@dominio.com" [(ngModel)]="mailPaciente" />
+        </mat-form-field>
     </div>
 
     <!-- Botón Crear -->
     <div class="col-3">
-      <button mat-raised-button (click)="crear()" class="btn-block mt-4">Crear</button>
+        <button mat-raised-button (click)="crear()" class="btn-block mt-4">Crear</button>
     </div>
-  </div>
-
-
-
-
-
+</div>

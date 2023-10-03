@@ -118,6 +118,7 @@ export class StorageService {
     //https://plataforma-oro.quski.ec:28888/quski-gaf/1.0.0/
     this.softBaseBankUrl = this.segResourcesUrl;
     //this.appResourcesUrl = this.segRootContextUrl;
+    //this.appResourcesUrl = 'https://3t2pht99-8080.use2.devtunnels.ms/';
     this.appResourcesUrl = 'http://localhost:8080/';
     //console.log(" datos appResourcesUrl", this.appResourcesUrl)
     this.databaseName="quski-core-documento";

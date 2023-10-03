@@ -3,6 +3,7 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Paciente } from 'src/app/interfaces/proceso.interface';
 import { TestService } from 'src/app/service/test-service.service';
 
@@ -35,7 +36,7 @@ export class ProcesoComponent implements AfterViewInit {
 
 
 
-constructor(private testService:TestService){
+constructor(private testService:TestService,private router: Router){
 
 }
 
@@ -54,5 +55,18 @@ buscarProcesosPage(){
 
   }
 
+  enviar(element:any){
+    this.testService.enviar(element.id).subscribe(p=>{
+      element.estado = 'ENVIADO'
+
+    })
+
+
+  }
+
+  verResultado(element:any){
+    console.log(this.router)
+    this.router.navigateByUrl('test/resultado/'+element.uniqueProcesoId);
+  }
 
 }

@@ -22,6 +22,8 @@ export class ResultadoComponent implements OnInit, OnDestroy {
   private sub: any;
   uniqueID!: string;
   respuestas!:Respuesta[]
+  interpretaciones!:any
+  total!:number
   constructor(private route: ActivatedRoute, private testService: TestService) {
 
   }
@@ -31,6 +33,16 @@ export class ResultadoComponent implements OnInit, OnDestroy {
       this.testService.buscarRespuestaByProcesoUniqueId(this.uniqueID).subscribe((preun: Respuesta[]) => {
         console.log("Respuesta ", preun);
         this.respuestas = preun
+
+      });
+
+
+      this.testService.buscarInterpretacio(this.uniqueID).subscribe((preun: any[]) => {
+        this.interpretaciones = preun
+
+      });
+      this.testService.totalInterpretacio(this.uniqueID).subscribe((preun: number) => {
+        this.total = preun
 
       });
     });

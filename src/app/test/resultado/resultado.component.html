@@ -2,3 +2,8 @@
     <label>{{respuesta.pregunta}}</label>
     <span>{{respuesta.respuesta}}</span>
 </div>
+<div *ngFor="let interpretacion of interpretaciones">
+    <label>{{interpretacion.nombre}}:</label>
+    <span>{{interpretacion.promedio | number : '0.2'}}</span>
+</div>
+Total: {{total}}

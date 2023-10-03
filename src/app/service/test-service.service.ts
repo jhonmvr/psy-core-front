@@ -11,8 +11,47 @@ export class TestService {
 
 
 
+
   constructor(private http: HttpClient, private storage: StorageService,) {
 
+  }
+  totalInterpretacio(uniqueID: string) {
+    let serviceUrl = this.storage.appResourcesUrl + 'api/proceso/totalInterpretacion';
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    let params = new HttpParams().set('uniqueId', uniqueID);
+    let options = { headers: headers, params: params };
+    return this.http.get(serviceUrl, options).pipe(
+      tap( // Log the result or error
+        (data: any) => data,
+        error => { /*this.HandleError(error, new ReNoticeService(),this.dialog);*/ }
+      )
+    );
+  }
+
+
+  buscarInterpretacio(uniqueID: string) {
+    let serviceUrl = this.storage.appResourcesUrl + 'api/proceso/buscarInterpretacio';
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    let params = new HttpParams().set('uniqueId', uniqueID);
+    let options = { headers: headers, params: params };
+    return this.http.get(serviceUrl, options).pipe(
+      tap( // Log the result or error
+        (data: any) => data,
+        error => { /*this.HandleError(error, new ReNoticeService(),this.dialog);*/ }
+      )
+    );
+  }
+  enviar(idProceso: any) {
+    let serviceUrl = this.storage.appResourcesUrl + 'api/proceso/enviar';
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    let params = new HttpParams().set('idProceso', idProceso);
+    let options = { headers: headers, params: params };
+    return this.http.get(serviceUrl,  options).pipe(
+      tap( // Log the result or error
+        (data: any) => data,
+        error => { /*this.HandleError(error, new ReNoticeService(),this.dialog);*/ }
+      )
+    );
   }
   buscarRespuestaByProcesoUniqueId(uniqueId: string) {
     let serviceUrl = this.storage.appResourcesUrl + 'api/proceso/buscarRespuestaByProcesoUniqueId';

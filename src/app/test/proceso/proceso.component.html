@@ -39,38 +39,45 @@
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-</div>
-<div class="row">
-    <!-- ComboBox Tipo Test -->
-    <div class="col-3">
-        <mat-form-field appearance="fill" class="w-100">
-            <mat-label>Tipo Test</mat-label>
-            <mat-select>
-                <mat-option value="test1">Test 1</mat-option>
-                <mat-option value="test2">Test 2</mat-option>
-                <!-- ...otros tests -->
-            </mat-select>
-        </mat-form-field>
-    </div>
 
-    <!-- Código Paciente -->
-    <div class="col-3">
+    <br> <br>
+    <div class="container">
+      <!-- ComboBox Tipo Test -->
+      <div class="column">
         <mat-form-field appearance="fill" class="w-100">
-            <mat-label>Código Paciente</mat-label>
-            <input matInput [value]="codigoPaciente" disabled/>
+          <mat-label>Tipo Test</mat-label>
+          <mat-select [(ngModel)]="selectedTest">
+            <mat-option *ngFor="let test of catalogoTest" [value]="test">
+              {{test.nombre}}
+          </mat-option>
+          </mat-select>
         </mat-form-field>
-    </div>
+      </div>
 
-    <!-- Mail Paciente -->
-    <div class="col-3">
+      <!-- Código Paciente -->
+      <div class="column">
         <mat-form-field appearance="fill" class="w-100">
-            <mat-label>Mail Paciente</mat-label>
-            <input matInput placeholder="ejemplo@dominio.com" [(ngModel)]="mailPaciente" />
+          <mat-label>Código Paciente</mat-label>
+          <input matInput [value]="codigoPaciente" disabled/>
         </mat-form-field>
-    </div>
+      </div>
 
-    <!-- Botón Crear -->
-    <div class="col-3">
+      <!-- Mail Paciente -->
+      <div class="column">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Mail Paciente</mat-label>
+          <input matInput placeholder="ejemplo@dominio.com" [(ngModel)]="mailPaciente" />
+        </mat-form-field>
+      </div>
+
+      <!-- Botón Crear -->
+      <div class="column">
         <button mat-raised-button (click)="crear()" class="btn-block mt-4">Crear</button>
+      </div>
     </div>
 </div>
+
+
+
+
+

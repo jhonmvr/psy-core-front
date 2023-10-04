@@ -2,9 +2,10 @@ import { DataSource } from '@angular/cdk/collections';
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSelectChange } from '@angular/material/select';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { Paciente } from 'src/app/interfaces/proceso.interface';
+import { Paciente, wrapperCrearTest } from 'src/app/interfaces/proceso.interface';
 import { TestService } from 'src/app/service/test-service.service';
 
 @Component({
@@ -15,17 +16,23 @@ import { TestService } from 'src/app/service/test-service.service';
 
 
 
-export class ProcesoComponent implements AfterViewInit {
+export class ProcesoComponent  {
 
+  selectedTest: any;
   codigoPaciente: string = 'CP12345';
   mailPaciente: string = '';
+  catalogoTest: any;
 
-  ngAfterViewInit(): void {
+  ngOnInit(){
+  this.getCatalogoTest();
+
     if (this.paginator) {
       this.dataSource.paginator = this.paginator;
+      this.buscarProcesosPage();
     }
-    this.buscarProcesosPage();
   }
+
+
 
   displayedColumns: string[] = ['accion', 'codigoPaciente', 'tipoTest', 'estado'];
 
@@ -49,10 +56,16 @@ buscarProcesosPage(){
     });
   }
 
-
-
   crear() {
-
+    const bodyDataCrearTest : wrapperCrearTest = {
+      codigoPaciente: this.codigoPaciente,
+      idTestCat: this.selectedTest ? this.selectedTest.id : '',
+      mailPaciente: this.mailPaciente
+    }
+    console.log(bodyDataCrearTest)
+    this.testService.crearTest(bodyDataCrearTest).subscribe((data:any)=>{
+      console.log('se creo con exito')
+    })
   }
 
   enviar(element:any){
@@ -68,5 +81,15 @@ buscarProcesosPage(){
     console.log(this.router)
     this.router.navigateByUrl('test/resultado/'+element.uniqueProcesoId);
   }
+
+  getCatalogoTest() {
+    this.testService.getCatalogoTest().subscribe((data: any) => {
+        console.log(data);
+        if (data.length !== 0) {
+            this.catalogoTest = data;
+        }
+    });
+}
+
 
 }

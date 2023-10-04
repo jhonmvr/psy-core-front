@@ -10,6 +10,7 @@
   font-size: 24px;
 }
 
+
 .table-container {
   padding: 0% 5%; /* 0 en la parte superior e inferior, 20px en los lados izquierdo y derecho */
 }
@@ -68,4 +69,15 @@ button mat-icon {
   font-size: 16px;
   vertical-align: middle;
   margin-left: 8px;
+}
+
+
+.container {
+  display: flex;
+  flex-wrap: nowrap; /* Esto evitará que los elementos se muevan a la siguiente línea */
+}
+
+.column {
+  flex: 1; /* Esto hará que todas las columnas tengan el mismo tamaño */
+  padding: 10px; /* Esto agregará un poco de espacio alrededor del contenido de cada columna */
 }

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { StorageService } from './storage.service';
 import { tap } from 'rxjs';
 import { Respuesta } from '../test/preguntas-test/preguntas-test.component';
+import { wrapperCrearTest } from '../interfaces/proceso.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -116,4 +117,31 @@ export class TestService {
     );
 
   }
+  crearTest( bodyData : wrapperCrearTest) {
+    let serviceUrl = this.storage.appResourcesUrl + 'api/proceso/crear';
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    let options = { headers: headers};
+    return this.http.post(serviceUrl, bodyData, options).pipe(
+      tap( // Log the result or error
+        (data: any) => data,
+        error => { /*this.HandleError(error, new ReNoticeService(),this.dialog);*/ }
+      )
+    );
+  }
+
+  getCatalogoTest() {
+    //let serviceUrl = 'https://3t2pht99-8080.use2.devtunnels.ms/api/test'
+    let serviceUrl = this.storage.appResourcesUrl + 'api/test/';
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+   // let params = new HttpParams().set('uniqueId', uniqueId);
+    let options = { headers: headers};
+    return this.http.get(serviceUrl, options).pipe(
+      tap( // Log the result or error
+        (data: any) => data,
+        error => { /*this.HandleError(error, new ReNoticeService(),this.dialog);*/ }
+      )
+    );
+  }
+
 }

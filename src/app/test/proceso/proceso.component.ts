@@ -7,7 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Paciente, wrapperCrearTest } from 'src/app/interfaces/proceso.interface';
 import { TestService } from 'src/app/service/test-service.service';
-
+import { v4 as uuidv4 } from 'uuid';
 @Component({
   selector: 'app-proceso',
   templateUrl: './proceso.component.html',
@@ -19,7 +19,7 @@ import { TestService } from 'src/app/service/test-service.service';
 export class ProcesoComponent  {
 
   selectedTest: any;
-  codigoPaciente: string = 'CP12345';
+  codigoPaciente: string = uuidv4();
   mailPaciente: string = '';
   catalogoTest: any;
 
